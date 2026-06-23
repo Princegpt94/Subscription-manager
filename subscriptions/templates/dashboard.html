@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="dashboard-title">
+    Dashboard
+</h1>
+
+<div class="cards">
+
+    <div class="card">
+        <h3>Total Subscriptions</h3>
+        <p>{{ subscriptions.count }}</p>
+    </div>
+
+    <div class="card">
+        <h3>Paid</h3>
+        <p>{{ paid_count }}</p>
+    </div>
+
+    <div class="card">
+        <h3>Due</h3>
+        <p>{{ due_count }}</p>
+    </div>
+
+    <div class="card">
+        <h3>Unpaid</h3>
+        <p>{{ unpaid_count }}</p>
+    </div>
+
+    <div class="card">
+        <h3>Monthly Expense</h3>
+        <p>₹ {{ total_amount }}</p>
+    </div>
+
+</div>
+
+<br><br>
+
+<div class="button-group">
+
+    <a href="/add/" class="btn">
+        Add Subscription
+    </a>
+
+    <a href="/view/" class="btn">
+        View Subscriptions
+    </a>
+
+</div>
+
+{% endblock %}

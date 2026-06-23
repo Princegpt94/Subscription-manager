@@ -1,0 +1,94 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+```
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Subscription Manager</title>
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+```
+
+</head>
+
+<body>
+
+```
+<nav class="navbar">
+
+    <div class="logo">
+        SubscriptionManager
+    </div>
+
+    <ul class="nav-links">
+
+        {% if user.is_authenticated %}
+
+            <li>
+                <a href="/">Home</a>
+            </li>
+
+            <li>
+                <a href="/dashboard/">Dashboard</a>
+            </li>
+
+            <li>
+                <a href="/add/">Add Subscription</a>
+            </li>
+
+            <li>
+                <a href="/view/">View</a>
+            </li>
+
+            <li>
+                <span class="profile-name">
+                    👤 {{ user.username }}
+                </span>
+            </li>
+
+            <li>
+                <form action="/accounts/logout/" method="post" style="display:inline;">
+    {% csrf_token %}
+    <button type="submit" class="logout-btn">Logout</button>
+</form>
+            </li>
+
+        {% else %}
+
+            <li>
+                <a href="/">Home</a>
+            </li>
+
+            <li>
+                <a href="/accounts/login/">Login</a>
+            </li>
+
+            <li>
+                <a href="/register/">Register</a>
+            </li>
+
+        {% endif %}
+
+    </ul>
+
+</nav>
+
+<div class="main-container">
+
+    {% block content %}
+
+    {% endblock %}
+
+</div>
+```
+
+</body>
+
+</html>

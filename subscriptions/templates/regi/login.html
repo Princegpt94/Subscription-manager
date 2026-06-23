@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="delete-card">
+    {% if messages %}
+
+    {% for message in messages %}
+
+        <div class="success-message">
+            {{ message }}
+        </div>
+
+    {% endfor %}
+
+{% endif %}
+
+   
+    <h1>Login</h1>
+
+    <form method="post">
+
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit" class="btn">
+            Login
+        </button>
+
+    </form>
+
+    <br>
+
+    <p>
+        Don't have an account?
+        <a href="{% url 'register' %}">
+            Register Here
+        </a>
+    </p>
+
+</div>
+
+{% endblock %}

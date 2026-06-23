@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="dashboard-title">
+    My Subscriptions
+</h1>
+
+<div class="cards">
+
+{% for sub in subscriptions %}
+
+<div class="card">
+
+    <h3>{{ sub.name }}</h3>
+
+    <p>₹ {{ sub.amount }}</p>
+
+    <p>
+        {{ sub.renewal_date|date:"d M Y" }}
+    </p>
+
+    <p>
+
+    {% if sub.status == 'Paid' %}
+
+    <span class="paid-status">
+        ✅ Paid
+    </span>
+
+    {% elif sub.status == 'Unpaid' %}
+
+    <span class="unpaid-status">
+        ❌ Unpaid
+    </span>
+
+    {% else %}
+
+    <span class="due-status">
+        ⏳ Due
+    </span>
+
+    {% endif %}
+
+    </p>
+
+    <br><br>
+
+    <div class="button-group">
+
+   <a href="{% url 'mark_paid' sub.id %}"
+      class="paid-btn">
+
+    Paid & Continue
+
+    </a>
+
+    <a href="{% url 'edit_subscription' sub.id %}"
+       class="edit-btn">
+
+        Edit
+
+    </a>
+
+    <a href="{% url 'delete_subscription' sub.id %}"
+       class="delete-btn">
+
+        Delete
+
+    </a>
+
+</div>
+</div>
+
+{% empty %}
+
+<div class="card">
+
+    <h3>No Subscriptions Found</h3>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}

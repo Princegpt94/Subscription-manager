@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="delete-card">
+
+    <h1>Create Account</h1>
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit" class="btn">
+            Register
+        </button>
+
+    </form>
+
+    <br>
+
+    <p>
+        Already have an account?
+
+        <a href="/accounts/login/">
+            Login
+        </a>
+    </p>
+
+</div>
+
+{% endblock %}
