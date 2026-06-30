@@ -1,4 +1,4 @@
-﻿asgiref==3.11.1
+asgiref==3.11.1
 asttokens==3.0.1
 colorama==0.4.6
 comm==0.2.3
